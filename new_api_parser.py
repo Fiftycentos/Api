@@ -1,6 +1,4 @@
 import requests
-import json
-
 import pandas as pd
 import sqlite3
 
@@ -8,11 +6,9 @@ con = sqlite3.connect("adata_sqlite_erd.db")
 cursor = con.cursor()
 
 
-
-
 def parser():
-
     url = 'https://xarid-api-trade.uzex.uz/Lib/GetDishonestSuppliers'
+    
     headers = {
         'accept' : 'application/json',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'
@@ -40,4 +36,4 @@ def parser():
     return results.to_sql('API_table_1', con, if_exists='replace', index=False)
 
 if __name__ == "__main__":
-    (parser())
+    parser()
